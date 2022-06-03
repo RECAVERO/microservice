@@ -2,14 +2,14 @@ package com.spring.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-@EnableEurekaClient
-public class CarServiceApplication {
+@EnableEurekaServer
+public class EurekaServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarServiceApplication.class, args);
+		SpringApplication.run(EurekaServiceApplication.class, args);
 	}
 
 }

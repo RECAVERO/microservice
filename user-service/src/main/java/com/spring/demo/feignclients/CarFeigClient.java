@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.spring.demo.models.Bike;
 import com.spring.demo.models.Car;
 
 @FeignClient(value="car-service",url="http://localhost:8002")

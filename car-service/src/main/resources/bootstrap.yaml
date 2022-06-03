@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: car-service
+  cloud:
+   config:
+    enabled: true
+    uri: http://localhost:8004
+  datasource:
+    name: car-service
+    url: jdbc:mysql://127.0.0.1:3306/prueba?useSSL=false&serverTimezone=UTC
+    username: root
+    password:
