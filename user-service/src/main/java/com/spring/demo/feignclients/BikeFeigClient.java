@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.spring.demo.models.Bike;
 import com.spring.demo.models.Car;
 
-@FeignClient(value="bike-service",url="http://localhost:8003")
+@FeignClient(value="bike-service")
 public interface BikeFeigClient {
 	@PostMapping("/bike")
 	Bike saveBike(@RequestBody Bike bike);
