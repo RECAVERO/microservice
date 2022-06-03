@@ -4,7 +4,7 @@ spring:
   cloud:
    config:
     enabled: true
-    uri: http://localhost:8004
+    uri: http://localhost:8081
   datasource:
     name: user-service
     url: jdbc:mysql://127.0.0.1:3306/prueba?useSSL=false&serverTimezone=UTC
