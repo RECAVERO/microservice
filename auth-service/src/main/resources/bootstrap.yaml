@@ -11,4 +11,4 @@ spring:
     username: root
     password:
 jwt:
-  secret: clavesecreta
+  secret: secret
