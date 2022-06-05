@@ -1,13 +1,21 @@
 package com.spring.demo.dto;
 
 public class AuthUserDto {
-	private String userName;
+	private String email;
 	private String password;
-	public String getUserName() {
-		return userName;
+	private String perfil;
+	public String getPerfil() {
+		return perfil;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;

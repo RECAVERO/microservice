@@ -23,27 +23,27 @@ public class AuthUserService {
 	JwtProvider jwtProvider;
 	
 	public AuthUser save(AuthUserDto dto) {
-		AuthUser user=authUserRepository.authUserByName(dto.getUserName());
-		if(user == null) {
+		AuthUser user=authUserRepository.authUserByName(dto.getEmail());
+		if(user != null) {
 			return null;
 		}
 		
 		String password=passwordEncoder.encode(dto.getPassword());
 		AuthUser authUser=new AuthUser();
-		authUser.setUserName(dto.getUserName());
+		authUser.setEmail(dto.getEmail());
 		authUser.setPassword(dto.getPassword());
-		
-		return authUserRepository.save(authUser);
+		authUser.setPerfil(dto.getPerfil());
+		return authUserRepository.authUsersave(authUser.getEmail(),authUser.getPassword(),authUser.getPerfil());
 	}
 	
 	public TokenDto login(AuthUserDto dto) {
-		AuthUser user=authUserRepository.authUserByName(dto.getUserName());
-		if(user != null) {
+		AuthUser user=authUserRepository.authUserByName(dto.getEmail());
+		if(user == null) {
 			return null;
 		}
 		
-		if(passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-			
+		//if(passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+		if(dto.getPassword().equals(user.getPassword())) {
 			return new TokenDto(jwtProvider.createToken(user));
 		}
 		return null;
@@ -57,7 +57,7 @@ public class AuthUserService {
 		
 		String userName=jwtProvider.getUserNameFromToken(token);
 		AuthUser user=authUserRepository.authUserByName(userName);
-		if(user!=null) {
+		if(user==null) {
 			return null;
 		}
 		
