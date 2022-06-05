@@ -36,11 +36,21 @@ public class AuthFilter extends AbstractGatewayFilterFactory<AuthFilter.Config>{
 			if(chunks.length != 2 || !chunks[0].equals("Bearer")) {
 				return onError(exchange,HttpStatus.BAD_REQUEST);
 			}
+			/*return chain.filter(exchange).then(Mono.fromRunnable(()->{
+				
+				System.out.println("http://auth-service/auth/validate?token="+chunks[1]);
+				
+			}));*/
+			
+
 			return webClient.build().post()
 					.uri("http://auth-service/auth/validate?token="+chunks[1])
 					.retrieve().bodyToMono(TokenDto.class)
 					.map(t->{
-						t.getToken();
+						/*exchange.getRequest()
+						.mutate()
+						.header("application/json", "");*/
+						//t.getToken();
 						return exchange;
 					}).flatMap(chain::filter);
 		}));

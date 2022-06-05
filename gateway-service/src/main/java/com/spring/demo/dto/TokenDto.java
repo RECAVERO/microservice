@@ -1,10 +1,10 @@
 package com.spring.demo.dto;
 
-public class TokenDto {
+public class TokenDto{
 	private String token;
 
-	public TokenDto(String token) {
-		this.token = token;
+	public TokenDto() {
+
 	}
 
 	public String getToken() {
