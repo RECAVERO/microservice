@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.demo.dto.AuthUserDto;
+import com.spring.demo.dto.RequestDto;
 import com.spring.demo.dto.TokenDto;
 import com.spring.demo.entities.AuthUser;
 import com.spring.demo.repositories.AuthUserRepository;
@@ -49,9 +50,9 @@ public class AuthUserService {
 		return null;
 	}
 	
-	public TokenDto validate(String token) {
+	public TokenDto validate(String token,RequestDto dto) {
 
-		if(!jwtProvider.validate(token)) {
+		if(!jwtProvider.validate(token,dto)) {
 			return null;
 		}
 		
