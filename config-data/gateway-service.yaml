@@ -19,8 +19,6 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/user/**
-          filters:
-            - AuthFilter
         - id: bike-service
           uri: lb://bike-service
           predicates:
@@ -33,4 +31,9 @@ spring:
           uri: lb://auth-service
           predicates:
             - Path=/auth/**
+    loadbalancer:
+      ribbon:
+        enabled: false
+
+
 
